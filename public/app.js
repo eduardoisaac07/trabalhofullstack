@@ -4,6 +4,7 @@ document.getElementById('pessoaForm').addEventListener('submit', async (event) =
     const nome = document.getElementById('nome').value;
     const cpf = document.getElementById('cpf').value;
     const telefone = document.getElementById('telefone').value;
+    const successMessage = document.getElementById('successMessage');
 
     try {
         const response = await fetch('/pessoas', {
@@ -15,8 +16,14 @@ document.getElementById('pessoaForm').addEventListener('submit', async (event) =
         });
 
         if (response.ok) {
-            alert('Pessoa cadastrada com sucesso!');
-            listarPessoas(); // Atualiza a lista
+            successMessage.textContent = 'Pessoa cadastrada com sucesso!';
+            successMessage.style.display = 'block'; // Exibe a mensagem de sucesso
+            setTimeout(() => {
+                successMessage.style.display = 'none'; // Esconde a mensagem após 3 segundos
+            }, 3000);
+
+            document.getElementById('pessoaForm').reset(); // Limpa o formulário
+            listarPessoas(); // Atualiza a lista de pessoas
         } else {
             alert('Erro ao cadastrar pessoa.');
         }
@@ -35,7 +42,7 @@ async function listarPessoas() {
 
         pessoas.forEach(pessoa => {
             const li = document.createElement('li');
-            li.textContent = `${pessoa.nome} - CPF: ${pessoa.cpf} - Telefone: ${pessoa.telefone}`;
+            li.textContent = `- ${pessoa.nome} - CPF: ${pessoa.cpf} - Telefone: ${pessoa.telefone}`;
             pessoasList.appendChild(li);
         });
     } catch (error) {

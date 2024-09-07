@@ -8,22 +8,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro de Pessoa</h1>
-        <form id="pessoaForm">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required><br>
-
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" name="cpf" required><br>
-
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" required><br>
-
-            <button type="submit">Cadastrar</button>
-        </form>
-
-        <h2>Pessoas cadastradas</h2>
-        <ul id="pessoasList"></ul>
+        <div class="form-section">
+            <h1>Cadastro de Pessoa</h1>
+            <form id="pessoaForm">
+                <div class="input-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" name="telefone" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Cadastrar</button>
+                </div>
+                <p id="successMessage" class="success-message"></p>
+            </form>
+        </div>
+        
+        <div class="list-section">
+            <h2>Pessoas cadastradas</h2>
+            <ul id="pessoasList"></ul>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
